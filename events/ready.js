@@ -13,30 +13,37 @@ client.on('ready', () => {
     let status = [
         {
             status: 'online',
-            game: {
-                type: 'LISTENING',
+            activity: {
                 name: 'Immortal Technique',
-            },
-        },
-        {
-            status: 'online',
-            game: {
                 type: 'LISTENING',
+            },
+        },
+        {
+            status: 'online',
+            activity: {
                 name: 'Tech N9ne',
+                type: 'LISTENING',
             },
         },
         {
             status: 'online',
-            game: {
-                type: 'PLAYING',
+            activity: {
+                name: 'Eminem',
+                type: 'LISTENING',
+            },
+        },
+        {
+            status: 'online',
+            activity: {
+                name: 'D12',
+                type: 'LISTENING',
+            },
+        },
+        {
+            status: 'dnd',
+            activity: {
                 name: 'Visual Studio Code',
-            },
-        },
-        {
-            status: 'online',
-            game: {
                 type: 'PLAYING',
-                name: `on ${client.guilds.size} ${client.guilds.size > 1 ? 'servers' : 'server'}`,
             },
         },
     ];
@@ -44,7 +51,7 @@ client.on('ready', () => {
     setInterval(() => {
         let index = Math.floor(Math.random() * status.length);
         client.user.setPresence(status[index]);
-    }, 5000);
+    }, 10000);
 
     client.guilds.cache.forEach(guild => {
         Servers.findOne({
