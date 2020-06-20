@@ -49,13 +49,15 @@ client.on('message', async message => {
                 return message.guild.leave();
             }
 
-            let member = message.member.roles;
+            let everyone = message.guild.roles.cache.find(role => role.name === '@everyone');
+
+            let member = message.member.roles.cache;
             let permission = {
                 actual: -1,
                 nodes: [
                     {
                         name: '@everyone',
-                        id: message.guild.defaultRole.id,
+                        id: everyone.id,
                         allowed_roles: ['@everyone'],
                     },
                     {
