@@ -8,12 +8,15 @@ exports.run = async (client, message) => {
         return message.channel.send('Please attach an image to set the avatar');
     }
 
-    client.user.setAvatar(avatarNew);
+    client.user.setAvatar(avatarNew.url);
+
+    message.delete();
 
     const embed = new Discord.MessageEmbed()
-    .setTitle('Bot\'s Avatar Changed')
-    .addField('From', avatarCurrent)
-    .addField('To', avatarNew);
+    .setTitle('Bot\'s Avatar Changed from :arrow_right:')
+    .setThumbnail(avatarCurrent)
+    .addField('To', ':arrow_down:')
+    .setImage(avatarNew.proxyURL);
 
     message.channel.send({ embed });
 
@@ -22,7 +25,7 @@ exports.run = async (client, message) => {
 exports.help = {
     name: 'setavatar',
     aliases: ['botavatar'],
-    args: ['<picture attachment>'],
+    args: ['<picture>'],
     permission: 'BOT_OWNER',
     description: 'Sets a Bot\'s avatar to the provided one',
 };

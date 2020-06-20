@@ -130,7 +130,7 @@ client.on('message', async message => {
                     }
                 });
 
-                if(args.length >= requiredArgs) {
+                if(args.length >= requiredArgs || args.length <= requiredArgs) {
                     client.settings = {
                         roles: permission,
                         version: packageInfo.version,
