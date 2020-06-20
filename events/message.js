@@ -133,7 +133,7 @@ client.on('message', async message => {
 
                 if(args.length >= requiredArgs) {
                     client.settings = {
-                        role: permission,
+                        roles: permission,
                         version: packageInfo.version,
                         repository: packageInfo.repository.url,
                         iconURL: 'https://cdn.discordapp.com/avatars/401269337924829186/06bbff31bbf6f1114bdad5e17dfbc59f.png?size=4096',
