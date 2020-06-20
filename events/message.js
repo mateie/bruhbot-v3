@@ -37,7 +37,7 @@ client.on('message', async message => {
     let cmd = messageArray[0].toLowerCase();
     let args = messageArray.slice(1);
 
-    let commandFile = client.commands.set(cmd.slice(client.prefix.length)) || client.rawListeners.length(cmd.slice(client.prefix.length));
+    let commandFile = client.commands.get(cmd.slice(client.prefix.length)) || client.aliases.get(cmd.slice(client.prefix.length));
     if(message.content.startsWith(client.prefix) && commandFile) {
         Servers.findOne({
             serverID: message.guild.id,

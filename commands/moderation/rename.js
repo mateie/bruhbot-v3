@@ -19,7 +19,7 @@ exports.run = (client, message, args) => {
 exports.help = {
     name: 'rename',
     aliases: ['nick', 'nickname'],
-    args: ['@mention|userID [New Name]'],
+    args: ['@mention|userID', '[new name]'],
     permission: 'ADMIN',
-    descriptionL: 'Rename the mentioned user',
+    description: 'Rename the mentioned user',
 };
