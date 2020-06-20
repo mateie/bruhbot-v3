@@ -1,7 +1,8 @@
+/* eslint-disable no-shadow */
 const Discord = require('discord.js');
 const Request = require('request');
 
-exports.run = async(client, message, args) => {
+exports.run = async (client, message, args) => {
     let country = new String();
     if(!args[0] || args[0] == 'world' || args[0] == 'global' || args[0] == 'all') country = 'all';
     else country = args.join(' ');
@@ -19,7 +20,7 @@ exports.run = async(client, message, args) => {
     if(country == 'all') {
         options.url += 'statistics';
         options.qs = { country: country };
-        Request(options, async(err, res, body) => {
+        Request(options, async (err, res, body) => {
             if(err) return console.error(err);
             body = JSON.parse(body);
 
