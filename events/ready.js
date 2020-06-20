@@ -40,6 +40,13 @@ client.on('ready', () => {
             },
         },
         {
+            status: 'online',
+            activity: {
+                name: 'Joyner Lucas',
+                type: 'LISTENING',
+            },
+        },
+        {
             status: 'dnd',
             activity: {
                 name: 'Visual Studio Code',

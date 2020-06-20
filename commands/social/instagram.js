@@ -21,7 +21,7 @@ exports.run = async (client, message, args) => {
     })
         .then(res => {
             let user = res.data;
-            if (args[1] == 'post') {
+            if (postsArg == 'post') {
                 let posts = user.edge_owner_to_timeline_media.edges;
                 let post = posts[Math.floor(Math.random() * posts.length)];
                 console.log(post);
