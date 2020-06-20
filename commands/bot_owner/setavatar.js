@@ -15,7 +15,7 @@ exports.run = async (client, message) => {
     const embed = new Discord.MessageEmbed()
     .setTitle('Bot\'s Avatar Changed from :arrow_right:')
     .setThumbnail(avatarCurrent)
-    .addField('To', ':arrow_down:')
+    .addField('To', ':arrow_down:', true)
     .setImage(avatarNew.proxyURL);
 
     message.channel.send({ embed });
