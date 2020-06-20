@@ -36,15 +36,10 @@ exports.run = async (client, message, args) => {
     }
 };
 
-exports.conf = {
-    enabled: true,
-    guildOnly: false,
-    aliases: ['pride'],
-    permLevel: 0,
-};
-
 exports.help = {
     name: 'gay',
+    aliases: ['pride'],
+    args: ['@mention'],
+    permission: 'USER',
     description: 'Makes avatar with gay flag',
-    usage: 'gay @user',
 };
