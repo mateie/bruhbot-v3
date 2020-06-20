@@ -1,0 +1,43 @@
+{
+  "name": "bruh-bot",
+  "version": "1.4.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "lint": "eslint .",
+    "patch": "npm version patch && git push bot master",
+    "minor": "npm version minor && git push bot master",
+    "major": "npm version major && git push bot master"
+  },
+  "keywords": [],
+  "author": "STealth",
+  "license": "ISC",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mateie/bruhbot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mateie/bruhbot/issues"
+  },
+  "homepage": "https://github.com/mateie/bruhbot#readme",
+  "description": "",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "canvas": "^2.6.1",
+    "child_process": "^1.0.2",
+    "discord.js": "^12.2.0",
+    "dotenv": "^8.2.0",
+    "emoji-regex": "^9.0.0",
+    "moment": "^2.27.0",
+    "mongoose": "^5.9.19",
+    "octonode": "^0.9.5",
+    "pornsearch": "^2.4.3",
+    "request": "^2.88.2",
+    "shelljs": "^0.8.4",
+    "superagent": "^5.2.2",
+    "urban": "^0.3.2",
+    "youtube-search": "^1.1.4",
+    "ytdl-core": "^2.1.7"
+  }
+}
