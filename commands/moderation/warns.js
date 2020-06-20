@@ -21,7 +21,6 @@ exports.run = async (client, message) => {
             userID: user.id,
         }, (err, res) => {
             if(!res) {
-                message.delete(client.deleteTimeout);
                 return message.channel.send('Unknown error occured');
             }
 
@@ -36,7 +35,6 @@ exports.run = async (client, message) => {
             message.channel.send(warnsEmbed);
         });
     } else {
-        message.delete(client.deleteTimeout);
         message.channel.send('User not found');
     }
 };

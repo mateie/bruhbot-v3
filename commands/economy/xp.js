@@ -16,7 +16,6 @@ exports.run = async (client, message) => {
     let user = message.mentions.members.first() || message.member;
 
     if(user.user.bot) {
-        message.delete(client.deleteTimeout);
         return message.channel.send('This user is a bot, it can\'t collect XP');
     }
 

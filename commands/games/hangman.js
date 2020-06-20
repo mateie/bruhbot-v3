@@ -1,7 +1,6 @@
 /* eslint-disable no-lonely-if */
 exports.run = async (client, message) => {
     if(client.game.hangman.has(message.guild.id)) {
-        message.delete(client.deleteTimeout);
         return message.channel.send('The game is already running');
     }
 

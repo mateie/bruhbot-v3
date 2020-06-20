@@ -6,7 +6,6 @@ exports.run = function(client, message, args) {
         if(parseInt(args[1]) > 100) return message.channel.send('Max 100 Messages at a time');
 
         if(client.game.hangman.has(message.guild.id)) {
-            message.delete(client.deleteTimeout);
             return message.channel.send(`The hangman game is running... Try again later`);
         }
 

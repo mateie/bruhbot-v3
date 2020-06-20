@@ -14,7 +14,6 @@ client.on('guildCreate', guild => {
         serverID: guild.id,
         serverName: guild.name,
         prefix: '!',
-        deleteTimeout: 3000,
         roles: {
             owner: "",
             admin: "",

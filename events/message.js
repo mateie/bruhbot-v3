@@ -29,7 +29,6 @@ client.on('message', async message => {
         }
 
         client.prefix = res.prefix;
-        client.deleteTimeout = res.deleteTimeout;
         client.spamChannels = res.spamChannels;
     });
 
@@ -146,11 +145,8 @@ client.on('message', async message => {
                     commandFile.run(client, message, args);
                 } else {
                     let err = `Usage: ${client.prefix}${commandFile.help.name} ${commandFile.help.args.join(' ')}`;
-                    message.delete(client.deleteTimeout);
-                    message.channel.send(err).then(message => message.delete(client.deleteTimeout));
+                    message.channel.send(err);
                 }
-            } else {
-                message.delete(client.deleteTimeout);
             }
         });
     } else if(!client.spamChannels.includes(message.channel.id)) {

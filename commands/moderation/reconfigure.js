@@ -1,6 +1,6 @@
 exports.run = async (client, message, args) => {
     if(!args[0] == `confirm${message.guild.id}`) {
-        await message.channel.send(`Resetting...`).then(msg => msg.delete(client.deleteTimeout));
+        await message.channel.send(`Resetting...`);
 
         client.emit('guildDelete', message.guild);
         client.emit('guildCreate', message.guild);

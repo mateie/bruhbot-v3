@@ -35,7 +35,6 @@ exports.run = async (client, message, args) => {
             body = JSON.parse(body);
 
             if(body.results == 0) {
-                message.delete(client.deleteTimeout);
                 return message.channel.send('Provided country was not found');
             }
 

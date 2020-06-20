@@ -14,8 +14,7 @@ exports.run = async (client, message, args) => {
 
     if(user) {
         if(user.id == message.author.id || user.user.bot) {
-            message.delete(client.deleteTimeout);
-            return message.channel.send('The person can\'t be warned').then(msg => msg.delete(client.deleteTimeout));
+            return message.channel.send('The person can\'t be warned');
         }
 
         let warnEmbed = new Discord.MessageEmbed()
@@ -49,8 +48,7 @@ exports.run = async (client, message, args) => {
         await user.send(warnEmbed);
         message.channel.send(infoWarn);
     } else {
-        message.delete(client.deleteTimeout);
-        message.channel.send('User not found').then(msg => msg.delete(client.deleteTimeout));
+        message.channel.send('User not found');
     }
 };
 

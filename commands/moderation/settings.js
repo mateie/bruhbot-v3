@@ -17,7 +17,6 @@ exports.run = async (client, message, args) => {
         let help = new Discord.MessageEmbed()
             .setTitle(`Settings`)
             .addField(`Prefix`, `${client.prefix}`)
-            .addField(`Delete Timeout`, `${client.deleteTimeout}`)
             .addField(`Spam Channels`, spamChannelsInfo);
 
         client.settings.roles.nodes.forEach(role => {
@@ -32,7 +31,6 @@ exports.run = async (client, message, args) => {
             serverID: message.guild.id,
         }, (err, settings) => {
             if (!settings) {
-                message.delete(client.deleteTimeout);
                 return message.channel.send('Unknown error occured. Try again later');
             }
 
@@ -40,14 +38,10 @@ exports.run = async (client, message, args) => {
             if(key == 'prefix') {
                 settings.prefix = value;
                 info = `'${value}'`;
-            } else if(key == 'deleteTimeout') {
-                settings.deleteTimeout = value;
-                info = `'${value}'`;
             } else if(key.startsWith('role:')) {
                 let newRole = message.mentions.roles.first() || message.guild.roles.find(role => role.id == value) || undefined;
 
                 if(!newRole) {
-                    message.delete(client.deleteTimeout);
                     return message.channel.send('Role not found');
                 }
 
@@ -76,12 +70,10 @@ exports.run = async (client, message, args) => {
             if(info) {
                 message.channel.send(`Successfully changed '${key}' value to ${info}`);
             } else {
-                message.delete(client.deleteTimeout);
                 message.channel.send('The setting your provided is not found in the database');
             }
         });
     } else {
-        message.delete(client.deleteTimeout);
         message.channel.send('No value provided');
     }
 };

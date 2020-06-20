@@ -4,7 +4,6 @@ const serversSchema = mongoose.Schema({
     serverID: String,
     serverName: String,
     prefix: String,
-    deleteTimeout: Number,
     roles: {
         owner: String,
         admin: String,
