@@ -8,9 +8,11 @@ exports.run = async (client, message) => {
         return message.channel.send('Please attach an image to set the avatar');
     }
 
-    client.user.setAvatar(avatarNew.url);
-
-    message.delete();
+    client.user.setAvatar(avatarNew.url)
+    .catch(err => {
+        console.error(err);
+        return message.channel.send('Can\'t change avatars too fast');
+    });
 
     const embed = new Discord.MessageEmbed()
     .setTitle('Bot\'s Avatar Changed from :arrow_right:')

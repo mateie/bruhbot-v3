@@ -13,16 +13,70 @@ const Servers = require('../models/servers');
 const Users = require('../models/users');
 
 client.on('ready', () => {
+    let status = [
+        {
+            status: 'online',
+            activity: {
+                name: 'VALORANT',
+                type: 'PLAYING',
+            },
+        },
+        {
+            status: 'online',
+            activity: {
+                name: 'Tom Clancy\'s Rainbow Six Siege',
+                type: 'PLAYING',
+            },
+        },
+        {
+            status: 'online',
+            activity: {
+                name: 'Counter-Strike: Global Offensive',
+                type: 'PLAYING',
+            },
+        },
+        {
+            status: 'online',
+            activity: {
+                name: 'Anime Thighs',
+                type: 'LISTENING',
+            },
+        },
+        {
+            status: 'online',
+            activity: {
+                name: 'Anime',
+                type: 'WATCHING',
+            },
+        },
+        {
+            status: 'dnd',
+            activity: {
+                name: 'Visual Studio Code',
+                type: 'PLAYING',
+            },
+        },
+        {
+            status: 'idle',
+            activity: {
+                name: 'Suggestions',
+                type: 'LISTENING',
+            },
+        },
+    ];
 
     setInterval(() => {
         spotifyAPI.getMyCurrentPlayingTrack()
         .then(data => {
             let trackName = data.body.item.name;
             let trackArtist = data.body.item.artists[0].name;
-            let trackAlbum = data.body.item.album.name;
-            let track = `${trackName} by ${trackArtist} in ${trackAlbum}`;
-            console.log(data.body.item);
-            client.user.setPresence({ activity: { name: track, type: 'LISTENING' }, status: 'online' });
+            let track = `${trackName} by ${trackArtist}`;
+            if(!data.body.is_playing) {
+                let index = Math.floor(Math.random() * status.length);
+                client.user.setPresence(status[index]);
+            } else {
+                client.user.setPresence({ activity: { name: track, type: 'LISTENING' }, status: 'online' });
+            }
         })
         .catch(err => {
             console.error(err);
