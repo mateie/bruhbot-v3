@@ -1,8 +1,7 @@
 const { client } = require('../index');
 const SpotifyWAPI = require('spotify-web-api-node');
 const spotifyAPI = new SpotifyWAPI();
-spotifyAPI.setAccessToken(process.env.SPOTIFY_API_KEY)
-
+spotifyAPI.setAccessToken(process.env.SPOTIFY_API_KEY);
 
 const mongoose = require('mongoose');
 mongoose.connect(process.env.DATABASE, {
@@ -12,53 +11,8 @@ mongoose.connect(process.env.DATABASE, {
 
 const Servers = require('../models/servers');
 const Users = require('../models/users');
-const { on } = require('superagent');
 
 client.on('ready', () => {
-    let status = [
-        {
-            status: 'online',
-            activity: {
-                name: 'Immortal Technique',
-                type: 'LISTENING',
-            },
-        },
-        {
-            status: 'online',
-            activity: {
-                name: 'Tech N9ne',
-                type: 'LISTENING',
-            },
-        },
-        {
-            status: 'online',
-            activity: {
-                name: 'Eminem',
-                type: 'LISTENING',
-            },
-        },
-        {
-            status: 'online',
-            activity: {
-                name: 'D12',
-                type: 'LISTENING',
-            },
-        },
-        {
-            status: 'online',
-            activity: {
-                name: 'Joyner Lucas',
-                type: 'LISTENING',
-            },
-        },
-        {
-            status: 'dnd',
-            activity: {
-                name: 'Visual Studio Code',
-                type: 'PLAYING',
-            },
-        },
-    ];
 
     setInterval(() => {
         spotifyAPI.getMyCurrentPlayingTrack()
