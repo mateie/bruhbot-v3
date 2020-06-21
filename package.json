@@ -1,6 +1,6 @@
 {
   "name": "bruh-bot",
-  "version": "3.0.0",
+  "version": "3.2.0",
   "main": "index.js",
   "scripts": {
     "start": "node .",
@@ -23,6 +23,7 @@
   "homepage": "https://github.com/mateie/bruhbot#readme",
   "description": "",
   "dependencies": {
+    "@discordjs/opus": "^0.3.2",
     "axios": "^0.19.2",
     "canvas": "^2.6.1",
     "child_process": "^1.0.2",
@@ -35,6 +36,7 @@
     "pornsearch": "^2.4.3",
     "request": "^2.88.2",
     "shelljs": "^0.8.4",
+    "spotify-web-api-node": "^4.0.0",
     "superagent": "^5.2.2",
     "urban": "^0.3.2",
     "youtube-search": "^1.1.4",

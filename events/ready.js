@@ -1,4 +1,8 @@
 const { client } = require('../index');
+const SpotifyWAPI = require('spotify-web-api-node');
+const spotifyAPI = new SpotifyWAPI();
+spotifyAPI.setAccessToken(process.env.SPOTIFY_API_KEY)
+
 
 const mongoose = require('mongoose');
 mongoose.connect(process.env.DATABASE, {
@@ -8,6 +12,7 @@ mongoose.connect(process.env.DATABASE, {
 
 const Servers = require('../models/servers');
 const Users = require('../models/users');
+const { on } = require('superagent');
 
 client.on('ready', () => {
     let status = [
@@ -56,8 +61,18 @@ client.on('ready', () => {
     ];
 
     setInterval(() => {
-        let index = Math.floor(Math.random() * status.length);
-        client.user.setPresence(status[index]);
+        spotifyAPI.getMyCurrentPlayingTrack()
+        .then(data => {
+            let trackName = data.body.item.name;
+            let trackArtist = data.body.item.artists[0].name;
+            let trackAlbum = data.body.item.album.name;
+            let track = `${trackName} by ${trackArtist} in ${trackAlbum}`;
+            console.log(data.body.item);
+            client.user.setPresence({ activity: { name: track, type: 'LISTENING' }, status: 'online' });
+        })
+        .catch(err => {
+            console.error(err);
+        });
     }, 10000);
 
     client.guilds.cache.forEach(guild => {

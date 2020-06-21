@@ -29,9 +29,9 @@ exports.run = async (client, message, args) => {
 
     let songInfo = await YTDL.getInfo(args[0]);
     let song = {
-        title: songInfo.videoDetails.title,
-        url: songInfo.videoDetails.video_url,
-        duration: songInfo.videoDetails.lengthSeconds,
+        title: songInfo.title,
+        url: songInfo.video_url,
+        duration: songInfo.length_seconds,
     };
 
     if(!serverQueue) {
@@ -69,7 +69,7 @@ exports.run = async (client, message, args) => {
         } catch(err) {
             console.error(err);
             queue.delete(message.guild.id);
-            return message.channel.send(`Error: ${err}`);
+            return message.channel.send(`${err}`);
         }
     } else {
         if(serverQueue.songs.length >= 20) {

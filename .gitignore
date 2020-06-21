@@ -1,6 +1,9 @@
 ### dotenv ###
 .env
 
+### Exe ###
+*.exe
+
 ### Node ###
 # Logs
 logs
